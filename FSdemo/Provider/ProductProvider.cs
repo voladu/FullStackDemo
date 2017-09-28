@@ -20,52 +20,52 @@ using CMS.Helpers;
 namespace CMS.DocumentEngine.Types.Fs
 {
     /// <summary>
-    /// Provides methods for retrieving pages of type Content.
+    /// Provides methods for retrieving pages of type CMSproduct.
     /// </summary>
-    public partial class ContentProvider
+    public partial class CMSproductProvider
     {
         /// <summary>
-        /// Returns a query that selects published pages of type Content.
+        /// Returns a query that selects published pages of type CMSproduct.
         /// </summary>
-        public static DocumentQuery<Content> GetContents()
+        public static DocumentQuery<CMSproduct> GetCMSproducts()
         {
-            return DocumentHelper.GetDocuments<Content>().PublishedVersion().Published();
+            return DocumentHelper.GetDocuments<CMSproduct>().PublishedVersion().Published();
         }
 
 
         /// <summary>
-        /// Returns a published page of type Content that matches the specified criteria.
+        /// Returns a published page of type CMSproduct that matches the specified criteria.
         /// </summary>
         /// <param name="nodeId">The identifier of the content tree node that represents the page.</param>
         /// <param name="siteName">The name of the site where the page belongs.</param>
         /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
-        public static DocumentQuery<Content> GetContent(int nodeId)
+        public static DocumentQuery<CMSproduct> GetCMSproduct(int nodeId, string cultureName, string siteName)
         {
-            return GetContents().WhereEquals("NodeID", nodeId);
+            return GetCMSproducts().OnSite(siteName).Culture(cultureName).WhereEquals("NodeID", nodeId);
         }
 
 
         /// <summary>
-        /// Returns a published page of type Content that matches the specified criteria.
+        /// Returns a published page of type CMSproduct that matches the specified criteria.
         /// </summary>
         /// <param name="nodeGuid">The globally unique identifier of the content tree node that represents the page.</param>
         /// <param name="siteName">The name of the site where the page belongs.</param>
         /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
-        public static DocumentQuery<Content> GetContent(Guid nodeGuid, string cultureName, string siteName)
+        public static DocumentQuery<CMSproduct> GetCMSproduct(Guid nodeGuid, string cultureName, string siteName)
         {
-            return GetContents().OnSite(siteName).Culture(cultureName).WhereEquals("NodeGUID", nodeGuid);
+            return GetCMSproducts().OnSite(siteName).Culture(cultureName).WhereEquals("NodeGUID", nodeGuid);
         }
 
 
         /// <summary>
-        /// Returns a published page of type Content that matches the specified criteria.
+        /// Returns a published page of type CMSproduct that matches the specified criteria.
         /// </summary>
         /// <param name="nodeAliasPath">The alias path to the content tree node that represents the page.</param>
         /// <param name="siteName">The name of the site where the page belongs.</param>
         /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
-        public static DocumentQuery<Content> GetContent(string nodeAliasPath, string cultureName, string siteName)
+        public static DocumentQuery<CMSproduct> GetCMSproduct(string nodeAliasPath, string cultureName, string siteName)
         {
-            return GetContents().OnSite(siteName).Culture(cultureName).Path(nodeAliasPath);
+            return GetCMSproducts().OnSite(siteName).Culture(cultureName).Path(nodeAliasPath);
         }
     }
 }

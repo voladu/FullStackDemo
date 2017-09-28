@@ -427,8 +427,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\ContentProvider.cs" />
+    <Compile Include="Provider\ProductProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\mimetypes.txt" />
